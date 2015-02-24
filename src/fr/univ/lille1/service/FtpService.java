@@ -17,15 +17,13 @@ public class FtpService {
     public FtpService() {
         ftpClient = new FTPClient();
 		try {
-			ftpClient.connect("127.0.0.1", 8000);
-			ftpClient.login("pouet", "1234");
+			ftpClient.connect("127.0.0.1", 1024);
+			ftpClient.login("johndoe", "foo");
 			ftpClient.setKeepAlive(true);
 
 		} catch (SocketException e) {
-			// TODO CHANGE ERROR CATCH
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO CHANGE ERROR CATCH
 			e.printStackTrace();
 		}
 
@@ -42,7 +40,7 @@ public class FtpService {
 			}
 			
 		} catch (IOException e) {
-			texte = "error";
+			texte = e.getMessage();
 		}
 		return texte;
 	}
